@@ -2,22 +2,25 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Integer base = 5000000;
 
-        for(int i = 0 ; i < 200; i++){
-
-            Double credito = Math.ceil( base * 0.369863 );
-
-            calcularIGC( base );
-
-            base += 1000000;
-        }
-
+        proyectar(5000000, 500000) ;
 
     }
 
 
-    public static void calcularIGC( Integer base ){
+    public static void proyectar( Integer b, Integer a){
+        Integer base = b;
+        Integer amplitud = a;
+
+        for(int i = 0 ; i < 500; i++){
+            Double credito = Math.ceil( base * 0.369863 );
+            calcularIGC( base, credito );
+            base += amplitud;
+        }
+    }
+
+
+    public static void calcularIGC( Integer b, Double c ){
 
         Integer igc = 0;
 
@@ -47,37 +50,39 @@ public class Main {
         double rebaja7 = 17114174.88;
         double rebaja8 = 28489376.88;
 
+        Integer base = (int) (b + c);
+
         if( base >= 0 && base <= t1Superior ){
             igc = (int) Math.round((base * tasa1) - rebaja1);
-            System.out.println(base +";"+ tasa1+";"+ rebaja1+";"+igc);
+            System.out.println(base +";"+ tasa1+";"+ rebaja1+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t1Superior && base <= t2Superior){
             igc = (int) Math.round((base * tasa2) - rebaja2);
-            System.out.println(base +";"+ tasa2+";"+ rebaja2+";"+igc);
+            System.out.println(base +";"+ tasa2+";"+ rebaja2+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t2Superior && base <= t3Superior){
             igc = (int) Math.round((base * tasa3) - rebaja3);
-            System.out.println(base +";"+ tasa3+";"+ rebaja3+";"+igc);
+            System.out.println(base +";"+ tasa3+";"+ rebaja3+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t3Superior && base <= t4Superior){
             igc = (int) Math.round((base * tasa4) - rebaja4);
-            System.out.println(base +";"+ tasa4+";"+ rebaja4+";"+igc);
+            System.out.println(base +";"+ tasa4+";"+ rebaja4+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t4Superior && base <= t5Superior){
             igc = (int) Math.round((base * tasa5) - rebaja5);
-            System.out.println(base +";"+ tasa5+";"+ rebaja5+";"+igc);
+            System.out.println(base +";"+ tasa5+";"+ rebaja5+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t5Superior && base <= t6Superior){
             igc = (int) Math.round((base * tasa6) - rebaja6);
-            System.out.println(base +";"+ tasa6+";"+ rebaja6+";"+igc);
+            System.out.println(base +";"+ tasa6+";"+ rebaja6+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t6Superior && base <= t7Superior){
             igc = (int) Math.round((base * tasa7) - rebaja7);
-            System.out.println(base +";"+ tasa7+";"+ rebaja7+";"+igc);
+            System.out.println(base +";"+ tasa7+";"+ rebaja7+";"+igc+";"+c+";"+(igc-c));
 
         }else if( base > t7Superior){
             igc = (int) Math.round((base * tasa8) - rebaja8);
-            System.out.println(base +";"+ tasa8+";"+ rebaja8+";"+igc);
+            System.out.println(base +";"+ tasa8+";"+ rebaja8+";"+igc+";"+c+";"+(igc-c));
 
         }
 
